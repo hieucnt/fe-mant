@@ -2,53 +2,31 @@ import { Menu, Icon } from "antd";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { isAuthenticatedUser } from "../../utils/auth";
+import { MENU_SITE } from "../../constants";
 
-const keys = ["/", "/dinos", "users","dnl-transaction-log"];
+// const keys = ["/", "/dinos", "users","dnl-transaction-log"];
 
-const menu = [
-  <Menu.Item key={keys[0]}>
-    <Link href={keys[0]}>
+const menu = MENU_SITE.map((item, index) => {
+  return (
+    <Menu.Item key={item.path}>
+    <Link href={item.path}>
       <a>
-        <Icon type="dashboard" />
-        <span>Dashboard</span>
-      </a>
-    </Link>
-  </Menu.Item>,
-  <Menu.Item key={keys[1]}>
-    <Link href={keys[1]}>
-      <a>
-        <Icon type="trophy" />
-        <span>Dinos</span>
-      </a>
-    </Link>
-  </Menu.Item>,
-  <Menu.Item key={keys[2]}>
-    <Link href={keys[2]}>
-      <a>
-        <Icon type="user" />
-        <span>Users</span>
-      </a>
-    </Link>
-  </Menu.Item>,
-  <Menu.Item key={keys[3]}>
-    <Link href={keys[3]}>
-      <a>
-        <Icon type="user" />
-        <span>Dnl transaction Log</span>
+        <Icon type={item.icon} />
+        <span>{item.title}</span>
       </a>
     </Link>
   </Menu.Item>
-  ,
-];
+  )
+})
 
 const CustomMenu = ({ style, closeDrawer }) => {
   const router = useRouter();
   const currentPath = router.route;
   let selectedKeys = [];
 
-  for (let i = keys.length - 1; i >= 0; i--) {
-    if (currentPath.includes(keys[i])) {
-      selectedKeys = [keys[i]];
+  for (let i = MENU_SITE.length - 1; i >= 0; i--) {
+    if (currentPath.includes(MENU_SITE[i])) {
+      selectedKeys = [MENU_SITE[i]];
       break;
     }
   }
@@ -58,7 +36,7 @@ const CustomMenu = ({ style, closeDrawer }) => {
       theme="dark"
       mode="inline"
       selectedKeys={selectedKeys}
-      style={{ ...style, padding: "16px 0" }}
+      style={{ ...style, padding: "16px 0", backgroundColor:'#ccc', color:'#000' }}
       onClick={({ key }) => {
         closeDrawer();
         router.push(key);

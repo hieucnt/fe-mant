@@ -29,48 +29,44 @@ const MobileLogo = styled(Logo)`
   vertical-align: -10px;
 `;
 
-const HeaderBlock = styled(TriggerBlock)`
-  padding: 0 12px;
-  cursor: pointer;
-  transition: all 0.3s;
+// const HeaderBlock = styled(TriggerBlock)`
+//   padding: 0 12px;
+//   cursor: pointer;
+//   transition: all 0.3s;
 
-  &:hover {
-    background: rgba(0, 0, 0, 0.025);
-  }
-`;
+//   &:hover {
+//     background: rgba(143, 133, 107);
+//   }
+// `;
 
-const MyMenu = () => {
-  return (
-    <Menu>
-      <Menu.Item key="profile">
-        <Icon type="user" />
-        Profile
-      </Menu.Item>
-      <Menu.Divider style={{ marginTop: -5, marginBottom: 0 }} />
-      <Menu.Item
-        key="logout"
-        onClick={() => {
-          window.localStorage.removeItem("is_authenticated");
-          window.location.reload();
-          window.location.href = "/";
-        }}
-      >
-        <Icon type="logout" />
-        Logout
-      </Menu.Item>
-    </Menu>
-  );
-};
+// const MyMenu = () => {
+//   return (
+//     <Menu>
+//       <Menu.Item key="profile">
+//         <Icon type="user" />
+//         Profile
+//       </Menu.Item>
+//       <Menu.Divider style={{ marginTop: -5, marginBottom: 0 }} />
+//       <Menu.Item
+//         key="logout"
+//         onClick={() => {
+//           window.localStorage.removeItem("is_authenticated");
+//           window.location.reload();
+//           window.location.href = "/";
+//         }}
+//       >
+//         <Icon type="logout" />
+//         Logout
+//       </Menu.Item>
+//     </Menu>
+//   );
+// };
 
-export default ({ collapsed, handleToggle }) => {
-  const { isAuthenticated } = {
-    isAuthenticated: true,
-  };
-
+const HeaderBar = ({ collapsed, handleToggle }) => {
   return (
     <Header
       style={{
-        background: "#fff",
+        background: "#8f856b",
         padding: 0,
         boxShadow: "0 1px 4px rgba(0,21,41,.08)",
         display: "flex",
@@ -79,7 +75,7 @@ export default ({ collapsed, handleToggle }) => {
       <Link href="/">
         <a>
           <StyledImageBlock>
-            <MobileLogo src="/static/transparent-logo.png" alt="logo" />
+            {/* <MobileLogo src="/static/transparent-logo.png" alt="logo" /> */}
           </StyledImageBlock>
         </a>
       </Link>
@@ -95,25 +91,8 @@ export default ({ collapsed, handleToggle }) => {
           }}
         />
       </TriggerBlock>
-
-      {isAuthenticated && (
-        <div
-          style={{
-            marginLeft: "auto",
-          }}
-        >
-          <Dropdown overlay={<MyMenu />} placement="bottomRight">
-            <HeaderBlock>
-              <Icon
-                type="user"
-                style={{ fontSize: 16, marginRight: 8 }}
-                title="User"
-              />
-              <span>Admin</span>
-            </HeaderBlock>
-          </Dropdown>
-        </div>
-      )}
     </Header>
   );
 };
+
+export default HeaderBar;

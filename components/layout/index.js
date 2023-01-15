@@ -1,15 +1,15 @@
 import React from "react";
-import "../static/index.css";
+import "../../static/index.css";
 import { Layout } from "antd";
 const { Content } = Layout;
 import nookies from "nookies";
 
-import FixedSider from "./layout/Sider";
-import MainLayout from "./layout/Main";
-import Header from "./layout/Header";
-import LogoTitle from "./layout/LogoTitle";
-import Drawer from "./layout/Drawer";
-import Menu from "./layout/Menu";
+import FixedSider from "./Sider";
+import MainLayout from "./Main";
+import HeaderBar from "./Header";
+import LogoTitle from "./LogoTitle";
+import Drawer from "./Drawer";
+import Menu from "./Menu";
 
 class MyLayout extends React.Component {
   state = {
@@ -61,7 +61,7 @@ class MyLayout extends React.Component {
         </FixedSider>
 
         <MainLayout collapsed={collapsed}>
-          <Header collapsed={collapsed} handleToggle={this.toggle} />
+          {/* <HeaderBar collapsed={collapsed} handleToggle={this.toggle} /> */}
           <Content
             style={{
               margin: "20px 16px 15px 16px",

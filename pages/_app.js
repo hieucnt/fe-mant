@@ -1,9 +1,9 @@
 import NextApp from "next/app";
 import Router, { withRouter } from "next/router";
 import NProgress from "nprogress";
-import Layout from "../components/Layout";
+import Layout from "../components/layout/index";
 import Error from "next/error";
-import Loading from "../components/Loading";
+import Loading from "../components/layout/Loading";
 import Head from "next/head";
 import nookies from "nookies";
 import "../styles/globals.scss";

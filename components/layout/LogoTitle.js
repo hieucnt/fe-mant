@@ -7,36 +7,26 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export const Logo = styled.img`
-  display: inline-block;
   height: 32px;
-  vertical-align: middle;
-`;
-
-const Title = styled.div`
-  display: inline-block;
-  color: white;
-  font-weight: 600;
-  font-size: 20px;
-  margin-left: 12px;
-  font-family: "Arial";
-  vertical-align: middle;
+  display: flex;
 `;
 
 const TitleWrapper = styled.div`
-  position: relative;
+  display: flex;
+  align-items: center;
   height: 64px;
-  padding-left: 24px;
   overflow: hidden;
   line-height: 64px;
   transition: all 0.3s;
-  background: #001529;
+  background: #8f856b;
+  justify-content: center;
 `;
 
 export default () => (
   <TitleWrapper>
-    <Link href="/">
-      <a style={{ display: "inline-block" }}>
-        <Title>DinoLand Admin</Title>
+    <Link href="https://mant.vn/">
+      <a target="_blank">
+        <Logo src="https://mant.vn/wp-content/uploads/2021/03/logo-1.png" alt="Mant" />
       </a>
     </Link>
   </TitleWrapper>

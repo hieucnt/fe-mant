@@ -1,6 +1,6 @@
 import axios from "axios";
 const customAxios = axios.create({
-  baseURL: "https://apidev.luz.monster",
+  baseURL: process.env.NEXT_PUBLIC_SERVER_ENDPOINT,
 });
 
 customAxios.interceptors.request.use(

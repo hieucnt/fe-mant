@@ -1,7 +1,6 @@
 import { useEffect, useRef } from "react";
 import { Layout } from "antd";
 import styled from "styled-components";
-import { isAuthenticatedUser } from "../../utils/auth";
 
 const { Sider } = Layout;
 
@@ -11,6 +10,7 @@ const FixedSider = styled(Sider)`
   position: fixed;
   left: 0;
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  background-color: #ccc;
 
   @media (max-width: 575.98px) {
     display: none;
@@ -25,9 +25,9 @@ const CustomSider = ({ collapsed, setCollapsed, children }) => {
   }, []);
 
   return (
-    isAuthenticatedUser() && <FixedSider
+     <FixedSider
       trigger={null}
-      width={256}
+      width={200}
       collapsible
       collapsed={collapsed}
       breakpoint="lg"

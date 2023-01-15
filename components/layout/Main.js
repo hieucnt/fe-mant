@@ -1,7 +1,5 @@
 import { Layout } from "antd";
 import styled, { css } from "styled-components";
-import AuthPage from "../AuthPage";
-import { isAuthenticatedUser } from "../../utils/auth";
 
 const MainLayout = styled(({ collapsed: _, ...props }) => (
   <Layout {...props} />
@@ -20,11 +18,9 @@ const MainLayout = styled(({ collapsed: _, ...props }) => (
 `;
 
 const Main = ({ children, collapsed }) => {
-  return isAuthenticatedUser() ? (
+  return (
     <MainLayout collapsed={collapsed}>{children}</MainLayout>
-  ) : (
-    <AuthPage />
-  );
+  )
 };
 
 export default Main;
