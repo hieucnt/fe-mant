@@ -36,7 +36,7 @@ const CustomMenu = ({ style, closeDrawer }) => {
       theme="dark"
       mode="inline"
       selectedKeys={selectedKeys}
-      style={{ ...style, padding: "16px 0", backgroundColor:'#ccc', color:'#000' }}
+      style={{ ...style, padding: "16px 0", backgroundColor:'#8f856b' }}
       onClick={({ key }) => {
         closeDrawer();
         router.push(key);

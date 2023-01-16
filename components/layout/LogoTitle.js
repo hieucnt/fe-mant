@@ -20,6 +20,7 @@ const TitleWrapper = styled.div`
   transition: all 0.3s;
   background: #8f856b;
   justify-content: center;
+  border-bottom: 1px solid #ccc;
 `;
 
 export default () => (

@@ -1,7 +1,5 @@
 import axios from "axios";
 import { NO_INTERNET } from "../constants";
-import { reduxStore } from "../store/index";
-import { isAuthenticatedUser } from "./auth";
 import { message } from "antd";
 let totalNoInternetRequest = 0;
 
@@ -42,12 +40,7 @@ customAxios.interceptors.request.use(
 
       cancelTokenSource.cancel(NO_INTERNET);
     }
-
-    if (isAuthenticatedUser()) {
-      let authInfo = reduxStore.getState().User.authInfo;
-      config.headers["Authorization"] = `Bearer ${authInfo.accessToken}`;
-    }
-
+    // config.timeout = process.env.NEXT_PUBLIC_API_TIMEOUT;
     return config;
   },
   (error) => {
@@ -60,7 +53,16 @@ customAxios.interceptors.response.use(
     return response;
   },
   (error) => {
-    message.error(error.response?.data?.error?.message || error.message);
+    if(process.env.NEXT_PUBLIC_MESSAGE_ERROR_ON == 'true' ||
+        (process.env.NEXT_PUBLIC_MESSAGE_ERROR_ON != 'true' &&
+            error.message != 'Network Error' &&
+            error.response?.data?.error?.statusCode != 404 &&
+            error.response?.data?.error?.statusCode != 422 &&
+            error.response?.data?.error?.statusCode != 500
+        )
+    ) {
+      message.error(error.response?.data?.error?.message || error.message);
+    }
     if (axios.isCancel(error)) {
       if (error.message === NO_INTERNET) {
         if (--totalNoInternetRequest === 0) {

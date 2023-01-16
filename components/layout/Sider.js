@@ -10,7 +10,7 @@ const FixedSider = styled(Sider)`
   position: fixed;
   left: 0;
   box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
-  background-color: #ccc;
+  background-color: #8f856b;
 
   @media (max-width: 575.98px) {
     display: none;
